@@ -26,5 +26,23 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-// TODO: Implement asset caching
-registerRoute();
+// Import necessary Workbox modules
+const { StaleWhileRevalidate } = require('workbox-strategies');
+
+// Define a cache name for assets
+const assetsCacheName = 'assets-cache';
+
+// Define a regular expression to match asset files
+const assetsRegex = /\.(js|css|png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf|otf)$/;
+
+// Register a route to cache assets using StaleWhileRevalidate strategy
+registerRoute(
+  ({ request, url }) => {
+    // Check if the request URL matches the assets regex
+    return request.destination === 'style' || request.destination === 'script' || (request.destination === 'image' && url.pathname.match(assetsRegex));
+  },
+  new StaleWhileRevalidate({
+    cacheName: assetsCacheName,
+  })
+);
+

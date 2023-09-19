@@ -15,11 +15,11 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      // Generate HTML files for your entry points
+      // Generate HTML files for entry points
       new HtmlWebpackPlugin({
-        template: './src/index.html', // Specify your HTML template file
-        chunks: ['main'], // Specify which entry point to include in this HTML file
-        filename: 'index.html', // Output HTML filename
+        template: './src/index.html', 
+        chunks: ['main'], 
+        filename: 'index.html',
       }),
 
       // Generate a Web App Manifest file
@@ -31,16 +31,16 @@ module.exports = () => {
         theme_color: '#000000',
         icons: [
           {
-            src: path.resolve('src/images/icon.png'), // Path to your app icon
-            sizes: [96, 128, 192, 256, 384, 512], // Specify icon sizes
-            destination: path.join('assets', 'icons'), // Destination directory for icons
+            src: path.resolve('src/images/icon.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'), 
           },
         ],
       }),
 
       // Injects the service worker into app
       new InjectManifest({
-        swSrc: './src/service-worker.js', // Path to service worker file
+        swSrc: './src/service-worker.js', 
       }),
     ],
 
