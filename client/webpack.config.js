@@ -24,9 +24,9 @@ module.exports = () => {
 
       // Generate a Web App Manifest file
       new WebpackPwaManifest({
-        name: 'Your PWA Name',
-        short_name: 'PWA Short Name',
-        description: 'Your PWA Description',
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'Simple text editor made using a PWA',
         background_color: '#ffffff',
         theme_color: '#000000',
         icons: [
