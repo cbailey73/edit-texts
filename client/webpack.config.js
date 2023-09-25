@@ -17,7 +17,7 @@ module.exports = () => {
     plugins: [
       // Generate HTML files for entry points
       new HtmlWebpackPlugin({
-        template: './src/index.html', 
+        template: './index.html', 
         chunks: ['main'], 
         filename: 'index.html',
       }),
@@ -40,7 +40,7 @@ module.exports = () => {
 
       // Injects the service worker into app
       new InjectManifest({
-        swSrc: './src/service-worker.js', 
+        swSrc: './src-sw.js', 
       }),
     ],
 
